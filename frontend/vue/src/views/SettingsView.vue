@@ -13,11 +13,29 @@
 export default {
   data() {
     return {
-      users: []
+      users: [],
+      socket: null
     };
   },
   created() {
     this.fetchUsers();
+
+    // Establish WebSocket connection when the component is created
+    this.socket = new WebSocket('ws://localhost:8000/ws/page_tracking/');
+    this.socket.onopen = () => {
+      // Send a message indicating page visit
+      const message = { type: 'visit', page_id: 1, user_id: 'user_id', timestamp: new Date() };
+      this.socket.send(JSON.stringify(message));
+    };
+  },
+  beforeDestroy() {
+    // Close WebSocket connection when the component is destroyed
+    if (this.socket) {
+      // Send a message indicating leaving the page
+      const message = { type: 'leave', page_id: 1, user_id: 'user_id', timestamp: new Date() };
+      this.socket.send(JSON.stringify(message));
+      this.socket.close();
+    }
   },
   methods: {
     async fetchUsers() {
