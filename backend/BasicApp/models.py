@@ -10,3 +10,11 @@ class PageVisit(models.Model):
 
     def __str__(self):
         return f"{self.user_id} visited page {self.page_id} at {self.start_time}"
+
+
+class SimplePageVisit(models.Model):
+    user_id = models.IntegerField(null=True)
+    page_id = models.IntegerField(null=True)
+
+    def __str__(self):
+        return f"{self.user_id} visited page {self.page_id}"

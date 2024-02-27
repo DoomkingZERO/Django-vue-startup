@@ -23,6 +23,7 @@ urlpatterns = [
     path('app/', include('BasicApp.urls')),
 ]
 
-# Include WebSocket URL patterns from the app
-# urlpatterns += BasicApp_ws_patterns
+# urlpatterns += [
+#     path('ws/', include(BasicApp_ws_patterns)),
+# ]
 

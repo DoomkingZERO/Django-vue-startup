@@ -28,12 +28,8 @@ export default {
     this.socket.send(JSON.stringify(message));
     };
   },
-  beforeDestroy() {
-    // Close WebSocket connection when the component is destroyed
+  unmounted() {
     if (this.socket) {
-      // Send a message indicating leaving the page
-      const message = { type: 'leave', page_id: 1, user_id: 'user_id', timestamp: new Date() };
-      this.socket.send(JSON.stringify(message));
       this.socket.close();
     }
   },
