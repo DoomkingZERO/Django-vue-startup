@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 
-from backend.BasicApp import consumers
+from BasicApp import consumers
 
 ws_urlpatterns = [
-    url('ws/page_tracking/', consumers.PageVisitConsumer),
+    path('ws/page_tracking/', consumers.PageVisitConsumer),
 ]

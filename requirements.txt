@@ -3,3 +3,4 @@ Django
 
 django-cors-headers
 pip install channels
+pip install daphne

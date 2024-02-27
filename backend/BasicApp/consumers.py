@@ -42,8 +42,7 @@ class PageVisitConsumer(WebsocketConsumer):
         self.accept()
 
     def disconnect(self, close_code):
-        pass  # No need to handle disconnection for this example
+        pass
 
     def receive(self, text_data):
-        # You can process incoming data if needed
         pass
