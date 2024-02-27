@@ -1,6 +1,12 @@
 # Django
-Django
 
+
+# daphne -b 0.0.0.0 -p 8001 backend.asgi:application
+# redis-server
+
+
+Django
 django-cors-headers
 pip install channels
 pip install daphne
+# redis

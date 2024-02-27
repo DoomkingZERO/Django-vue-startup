@@ -23,9 +23,9 @@ export default {
     // Establish WebSocket connection when the component is created
     this.socket = new WebSocket('ws://localhost:8001/ws/page_tracking/');
     this.socket.onopen = () => {
-      // Send a message indicating page visit
-      const message = { type: 'visit', page_id: 1, user_id: 'user_id', timestamp: new Date() };
-      this.socket.send(JSON.stringify(message));
+    // const currentTime = new Date().toISOString();
+    const message = { type: 'visit', page_id: 1, user_id: 1 };
+    this.socket.send(JSON.stringify(message));
     };
   },
   beforeDestroy() {

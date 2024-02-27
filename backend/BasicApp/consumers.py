@@ -45,4 +45,12 @@ class PageVisitConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data):
-        pass
+        # Parse the incoming JSON data
+        data = json.loads(text_data)
+
+        # Extract page_id and user_id from the received data
+        page_id = data.get('page_id')
+        user_id = data.get('user_id')
+
+        # Print the received data to the console
+        print(f"Received data: Page ID - {page_id}, User ID - {user_id}")
