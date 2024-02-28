@@ -3,9 +3,18 @@ from django.contrib.auth.models import User
 
 
 class PageVisit(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    page_id = models.CharField(max_length=100)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    user_id = models.IntegerField(null=True)
+    page_id = models.IntegerField(null=True)
+    start_time = models.DateTimeField(null=True)
+    stop_time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return f"{self.user} visited page {self.page_id} at {self.timestamp}"
+        return f"{self.user_id} visited page {self.page_id} at {self.start_time}"
+
+
+class SimplePageVisit(models.Model):
+    user_id = models.IntegerField(null=True)
+    page_id = models.IntegerField(null=True)
+
+    def __str__(self):
+        return f"{self.user_id} visited page {self.page_id}"

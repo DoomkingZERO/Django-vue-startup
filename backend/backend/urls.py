@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from BasicApp.urls import websocket_urlpatterns as BasicApp_ws_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('BasicApp.urls')),
 ]
+
+# urlpatterns += [
+#     path('ws/', include(BasicApp_ws_patterns)),
+# ]
+

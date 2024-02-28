@@ -13,11 +13,25 @@
 export default {
   data() {
     return {
-      users: []
+      users: [],
+      socket: null
     };
   },
   created() {
     this.fetchUsers();
+
+    // Establish WebSocket connection when the component is created
+    this.socket = new WebSocket('ws://localhost:8001/ws/page_tracking/');
+    this.socket.onopen = () => {
+    // const currentTime = new Date().toISOString();
+    const message = { type: 'visit', page_id: 1, user_id: 1 };
+    this.socket.send(JSON.stringify(message));
+    };
+  },
+  unmounted() {
+    if (this.socket) {
+      this.socket.close();
+    }
   },
   methods: {
     async fetchUsers() {
